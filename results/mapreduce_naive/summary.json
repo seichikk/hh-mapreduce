@@ -1,0 +1,42 @@
+{
+  "mode": "naive",
+  "chunk_mib": 32,
+  "workers": 1,
+  "reducers": 4,
+  "fail_task": -1,
+  "object_bytes": 847619384,
+  "range_gets": 26,
+  "read_bytes": 847619384,
+  "map_tasks": 26,
+  "rows_scanned": 229388,
+  "vacancies": 4356,
+  "with_skills": 3345,
+  "with_salary": 1442,
+  "emitted": [
+    22866,
+    92865,
+    310903
+  ],
+  "shuffled": 426634,
+  "unique": [
+    1164,
+    17198,
+    114332
+  ],
+  "sums": [
+    22866,
+    92865,
+    310903
+  ],
+  "combinations": [
+    22866,
+    92865,
+    310903
+  ],
+  "restarts": 0,
+  "retried": [],
+  "seconds_total": 13.838,
+  "seconds_map": 12.779,
+  "seconds_reduce": 1.058,
+  "seconds_s3_read": 2.628
+}

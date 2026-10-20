@@ -1,0 +1,20 @@
+def reduce_task(r, k, pieces, mode):
+    if mode == "naive":
+        pairs = [p for piece in pieces for p in piece]
+        pairs.sort()
+        total = {}
+        prev = None
+        acc = 0
+        for combo, one in pairs:
+            if combo != prev:
+                if prev is not None:
+                    total[prev] = acc
+                prev, acc = combo, 0
+            acc += one
+        if prev is not None:
+            total[prev] = acc
+        return r, k, total
+    total = Counter()
+    for piece in pieces:
+        total.update(piece)
+    return r, k, dict(total)

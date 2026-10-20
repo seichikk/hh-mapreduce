@@ -1,0 +1,40 @@
+def map_task(task_id, attempt, data, fields, mode, fail_task, reducers):
+    if task_id == fail_task and attempt == 1:
+        print(f"  [маппер задачи {task_id}] имитирую падение процесса: os._exit(137)\n", end="", flush=True)
+        os._exit(137)
+    t0 = time.perf_counter()
+    parser = "csv"
+    if mode == "opt":
+        try:
+            rows = list(rows_arrow(data, fields))
+            parser = "arrow"
+        except Exception:
+            rows = list(rows_csv(data, fields))
+            parser = "csv (запасной)"
+    else:
+        rows = rows_csv(data, fields)
+    if mode == "naive":
+        parts = [[[] for _ in c.KS] for _ in range(reducers)]
+    else:
+        parts = [[Counter() for _ in c.KS] for _ in range(reducers)]
+    scanned = 0
+    vacancies = []
+    emitted = [0, 0, 0]
+    for row in rows:
+        scanned += 1
+        if row is None or not c.is_variant(row):
+            continue
+        skills = c.parse_skills(row.get("key_skills"))
+        vacancies.append(c.vacancy_record(row, skills))
+        for k in c.KS:
+            for combo in combinations(skills, k):
+                emitted[k - 1] += 1
+                target = parts[partition_of(combo, reducers)][k - 1]
+                if mode == "naive":
+                    target.append((combo, 1))
+                else:
+                    target[combo] += 1
+    shuffled = sum(len(parts[r][k - 1]) for r in range(reducers) for k in c.KS)
+    return {"task": task_id, "attempt": attempt, "pid": os.getpid(), "parser": parser, "scanned": scanned,
+            "vacancies": vacancies, "emitted": emitted, "shuffled": shuffled, "parts": parts,
+            "seconds": time.perf_counter() - t0, "bytes": len(data)}

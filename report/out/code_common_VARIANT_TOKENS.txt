@@ -1,0 +1,1 @@
+VARIANT_TOKENS = ("c#", "с#", ".net", "dotnet", "c sharp", "csharp", "си шарп")

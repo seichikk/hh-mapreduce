@@ -1,0 +1,18 @@
+def salary_net(row):
+    if str(row.get("currency") or "").strip().upper() not in ("RUR", "RUB"):
+        return None
+    low = to_number(row.get("salary_from"))
+    high = to_number(row.get("salary_to"))
+    if low is None and high is None:
+        return None
+    if low is not None and high is not None:
+        if low > high:
+            low, high = high, low
+        value = (low + high) / 2
+    else:
+        value = low if low is not None else high
+    if is_true(row.get("gross")):
+        value *= NDFL
+    if value < SALARY_MIN or value > SALARY_MAX:
+        return None
+    return round(value, 2)

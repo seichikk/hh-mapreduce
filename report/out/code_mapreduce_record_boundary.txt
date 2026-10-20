@@ -1,0 +1,9 @@
+def record_boundary(buf):
+    total = buf.count(b'"')
+    pos = len(buf)
+    while True:
+        pos = buf.rfind(b"\n", 0, pos)
+        if pos < 0:
+            return -1
+        if (total - buf.count(b'"', pos)) % 2 == 0:
+            return pos + 1

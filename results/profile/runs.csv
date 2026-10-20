@@ -1,0 +1,22 @@
+method,title,attempt,seconds,cpu_seconds,peak_rss_mib,samples,same_as_reference
+mr_naive,"mapreduce, наивный (до)",1,14.37,16.952,509.3,692,True
+mr_opt_w1,"mapreduce, arrow + combiner, 1 маппер",1,7.38,10.925,583.1,354,True
+mr_opt,"mapreduce, оптимизированный (после)",1,6.203,18.045,1144.2,291,True
+mr_opt_c8,"mapreduce opt, чанк 8 миб",1,7.082,17.281,788.7,332,True
+mr_opt_c128,"mapreduce opt, чанк 128 миб",1,6.204,18.081,2045.5,291,True
+duck_csv,duckdb по csv,1,4.447,3.652,2526.6,215,True
+duck_parquet,duckdb по parquet (после),1,2.001,2.424,241.7,97,True
+mr_opt_w1,"mapreduce, arrow + combiner, 1 маппер",2,7.38,10.965,581.6,354,True
+mr_opt,"mapreduce, оптимизированный (после)",2,6.349,18.474,1121.0,296,True
+mr_opt_c8,"mapreduce opt, чанк 8 миб",2,6.998,17.342,785.2,328,True
+mr_opt_c128,"mapreduce opt, чанк 128 миб",2,6.281,18.189,2056.1,295,True
+duck_csv,duckdb по csv,2,4.463,3.717,2526.4,216,True
+duck_parquet,duckdb по parquet (после),2,1.983,2.161,259.8,96,True
+mr_naive,"mapreduce, наивный (до)",2,14.712,17.376,544.7,707,True
+mr_opt,"mapreduce, оптимизированный (после)",3,6.124,17.942,1134.8,287,True
+mr_opt_c8,"mapreduce opt, чанк 8 миб",3,7.015,16.899,762.8,330,True
+mr_opt_c128,"mapreduce opt, чанк 128 миб",3,6.283,18.254,2055.8,295,True
+duck_csv,duckdb по csv,3,4.445,3.677,2533.9,215,True
+duck_parquet,duckdb по parquet (после),3,2.111,2.288,257.5,102,True
+mr_naive,"mapreduce, наивный (до)",3,15.04,17.688,515.9,723,True
+mr_opt_w1,"mapreduce, arrow + combiner, 1 маппер",3,7.564,11.255,583.1,362,True

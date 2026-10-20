@@ -1,0 +1,5 @@
+def is_variant(row):
+    if (row.get("role") or "") != VARIANT_ROLE:
+        return False
+    name = (row.get("name") or "").lower()
+    return any(token in name for token in VARIANT_TOKENS)

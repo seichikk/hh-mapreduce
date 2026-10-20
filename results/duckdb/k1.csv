@@ -1,0 +1,1165 @@
+skill_1,count
+c#,2237
+.net framework,1130
+asp.net,1093
+postgresql,1031
+sql,927
+git,859
+.net core,771
+ms sql,671
+с#,613
+entity framework,505
+rabbitmq,450
+ооп,449
+javascript,414
+docker,383
+.net,331
+ms sql server,257
+solid,240
+asp.net core,238
+kafka,233
+mongodb,233
+rest,222
+wpf,218
+mvc,202
+html,200
+redis,184
+linux,177
+kubernetes,161
+ms visual studio,158
+linq,157
+react,156
+css,145
+typescript,144
+rest api,140
+английский язык,136
+mysql,132
+api,125
+angular,122
+wcf,120
+unity,115
+разработка по,115
+visual studio c#,110
+субд,96
+xml,93
+работа в команде,92
+transact-sql,90
+ci/cd,89
+python,85
+orm,82
+c++,79
+базы данных,76
+scrum,75
+angularjs,73
+apache kafka,72
+oracle,71
+it,66
+jquery,64
+windows forms,64
+web api,60
+clickhouse,59
+asp.net mvc,58
+backend,57
+ddd,56
+разработка логистики,55
+grpc,51
+mssql,49
+unit testing,49
+blazor,48
+soap,47
+работа с базами данных,46
+atlassian jira,45
+nosql,45
+elasticsearch,42
+net core,42
+json,40
+gitlab,39
+clean architecture,38
+html5,38
+java,37
+jenkins,37
+http,36
+sql server,36
+микросервисы,36
+design patterns,34
+ef core,34
+jira,34
+android,33
+dapper,33
+vue.js,33
+iis,30
+microsoft visual studio,30
+mvvm,30
+.net 6,29
+ado.net,28
+developer express,28
+xamarin,28
+azure,27
+bootstrap,26
+css3,26
+ios,26
+работа с большим объемом информации,26
+рефакторинг кода,26
+json api,25
+crm,24
+управление командой,24
+c/c++,23
+js,23
+swagger,23
+core,22
+t-sql,22
+алгоритмы,22
+unity3d,21
+websockets,21
+деловая коммуникация,20
+avalonia,19
+entity framework core,19
+windows,19
+zabbix,19
+agile,18
+oracle pl/sql,18
+xunit,18
+микросервисная архитектура,18
+ответственность,18
+ajax,17
+delphi,17
+golang,17
+java script,17
+kiss,17
+maui,17
+node.js,17
+php,17
+signalr,17
+tdd,17
+ui,17
+vr,17
+webapi,17
+желание учиться и развиваться,17
+postgressql,16
+redux,16
+tcp/ip,16
+teamcity,16
+web,16
+crypto,15
+github,15
+k8s,15
+nats,15
+startups,15
+web services,15
+.netcore,14
+autodesk revit,14
+rabbit mq,14
+terrasoft crm,14
+веб-программирование,14
+обучение и развитие,14
+grafana,13
+логистика,13
+удаленный формат работы,13
+agile project management,12
+atlassian confluence,12
+elk,12
+figma,12
+nginx,12
+nhibernate,12
+tfs,12
+web application development,12
+асинхронное программирование,12
+деловая переписка,12
+деловое общение,12
+с++,12
+camunda,11
+confluence,11
+elk stack,11
+game programming,11
+ms dynamics crm,11
+ms visio,11
+prometheus,11
+rider,11
+service fabric,11
+soa,11
+svn,11
+visual studio,11
+vuejs,11
+websocket,11
+пользователь пк,11
+умение работать в команде,11
+cassandra,10
+f#,10
+net framework,10
+postgres,10
+restful api,10
+желание расти и развиваться,10
+опыт работы в команде,10
+разработка технических заданий,10
+удаленная работа,10
+.net 5,9
+asp.net core web api,9
+bpmn,9
+c,9
+cqrs,9
+directum,9
+docsvision,9
+kibana,9
+opengl,9
+reactjs,9
+unity 3d,9
+vue,9
+алгоритмы и структуры данных,9
+высокая логика,9
+любопытство в работе,9
+многозадачность,9
+многопоточность,9
+оптимизация кода,9
+управление проектами,9
+.net 8,8
+algorithms,8
+data warehouse,8
+html/css,8
+matlab,8
+microservices,8
+unreal engine,8
+"xml, xsd",8
+аналитическое мышление,8
+коммуникабельность,8
+ориентация на результат,8
+3d-графика,7
+ar,7
+autocad,7
+autodesk inventor,7
+bpmsoft,7
+dependency injection,7
+devops,7
+docker-compose,7
+graphql,7
+https,7
+kerberos,7
+linq2db,7
+machine learning,7
+аналитический склад ума,7
+программирование,7
+.net core 6,6
+asp.net web api,6
+avaloniaui,6
+code review,6
+codesys,6
+computer vision,6
+data science,6
+deep learning,6
+dots,6
+elastic,6
+erp и учетные системы,6
+etl,6
+gamedev,6
+masstransit,6
+razor,6
+react js,6
+react.js,6
+scipy,6
+team lead,6
+trello,6
+unity developer,6
+ux/ui,6
+xaml,6
+аккуратность в отчетах и оценках,6
+английский — b1 — средний,6
+высшее образование,6
+ит,6
+корректное формирование ожиданий,6
+математическая статистика,6
+навыки архитектрного проектирования,6
+навыки декомпозиции задач,6
+нейронные сети,6
+разработка компьютерных игр,6
+реляционные бд,6
+самостоятельность,6
+теория машинного обучения,6
+.net 8 blazor,5
+.net core 3-5,5
+adobe photoshop,5
+asp,5
+asp .net core,5
+automapper,5
+creatio,5
+devexpress,5
+go,5
+jwt,5
+mfc,5
+ms crm,5
+multithread programming,5
+net,5
+odatа,5
+openshift,5
+pl/sql,5
+qa,5
+unit тесты,5
+unittests,5
+webpack,5
+автоматизация,5
+автоматизация документооборота,5
+высоконагруженный сервис,5
+обучаемость,5
+основы программирования,5
+системная интеграция,5
+#c,4
+.net 6.0,4
+.net 7,4
+.net core 3.1,4
+asp.net core 6.0,4
+avalonia ui,4
+aws,4
+bash,4
+ci,4
+clr,4
+cистемы управления базами данных,4
+design,4
+di,4
+ef,4
+esb,4
+event sourcing,4
+hlsl,4
+java applets,4
+java collections,4
+java multithreading,4
+javaservlets,4
+jdbc,4
+jsp,4
+keycloak,4
+knockout js,4
+kubernates,4
+microsoft azure service fabric,4
+ms dynamics,4
+ms vs 2015+,4
+net 5,4
+net.core,4
+nunit,4
+olap,4
+qt,4
+quartz,4
+redux|mobx,4
+rpa,4
+sass,4
+seq,4
+tcp,4
+tls/ssl,4
+unitask,4
+visual studio code,4
+visual studio net,4
+vs code,4
+vue js,4
+web sockets,4
+winapi,4
+workflowcore,4
+wsdl,4
+yandex cloud,4
+анализ кода,4
+асу тп,4
+база данных: olap,4
+дружелюбность,4
+инициативность,4
+информационные технологии,4
+креативность,4
+организация учебного процесса,4
+платежи / переводы,4
+системное мышление,4
+тестирование,4
+юнит-тесты,4
+.net 5+,3
+.net 6+,3
+.net standard 2,3
+".net, .net framework, asp.net mvc, asp.net core, sql",3
+.net6,3
+3d,3
+api gateway,3
+architecture framework,3
+asp.net сore,3
+bcl,3
+bitbucket,3
+bitrix,3
+c# .net,3
+c# .net core,3
+c#.net,3
+debian,3
+devextreme,3
+di-container,3
+directx,3
+dotnet,3
+ecs,3
+efcore,3
+elma,3
+entityframework,3
+entityframework 6,3
+entityframework core,3
+form.io и nodered,3
+frontend,3
+fullstack,3
+game,3
+git netcore ооп asp.net maui,3
+gitflow,3
+gitlab ci,3
+gitlab ci/cd,3
+graylog,3
+html\css,3
+http1.1,3
+http2,3
+kanban,3
+less,3
+link2db,3
+linq2db+fluentmigrator,3
+mediatr,3
+messaging,3
+mobx,3
+mondrian,3
+mq,3
+ms access,3
+ms iis,3
+ms internet,3
+net framework 4,3
+net mvc,3
+oauth,3
+objective-c,3
+octopus deploy,3
+openapi,3
+orm - entity,3
+pilot,3
+postgres pro,3
+postrgresql,3
+powershell,3
+prism,3
+rabbit,3
+razor pages,3
+regex,3
+regular expressions,3
+restful,3
+rust,3
+selenium,3
+solid works,3
+sqlite,3
+sqlserver,3
+terrasoft,3
+"typescript, javascript",3
+uml,3
+unit testing frameworks,3
+unit-тесты,3
+upd,3
+vb.net,3
+vba,3
+vbscript,3
+web приложения,3
+webgl,3
+webrtc,3
+winforms,3
+xml/xslt,3
+zenject,3
+автоматизация процессов,3
+архитектор,3
+архитектура по,3
+виртуальная реальность,3
+документооборот,3
+индивидуальное обучение,3
+клиент-серверных приложения,3
+лазерная техника,3
+металлообработка,3
+опп,3
+позитивное мышление,3
+преподаватель,3
+проведение презентаций,3
+программирование 3d-графики,3
+работа в коллективе,3
+работа в условиях многозадачности,3
+работа с людьми,3
+руководство коллективом,3
+сore,3
+системы контроля версий,3
+сэд,3
+творческое мышление,3
+техническая поддержка,3
+торговая площадка,3
+умение принимать решения,3
+умение работать в условиях многозадачности,3
+управление разработкой,3
+.net 8.0,2
+.net core 3,2
+.net core 3.0,2
+.net core 6+,2
+.net core 7,2
+.net core.,2
+.net maui,2
+.net standard,2
+.net6+,2
+1с-битрикс,2
+1с: предприятие 8,2
+3dexperience,2
+accord.net,2
+activemq,2
+alglib,2
+angular js,2
+ansible,2
+api интерфейсов,2
+asmx,2
+asp .net mvc,2
+asp net core mvc,2
+asp.net core 6+,2
+asp.net webapi,2
+aspnet,2
+azure devops,2
+backbone,2
+bim,2
+"blazor, html",2
+blender 3d,2
+blockchain,2
+boost,2
+branching,2
+"c# (base types library, generics)",2
+c# net framework,2
+c# и .net,2
+c#.net core 2+,2
+cake build,2
+cd,2
+chrome devtools,2
+chromium,2
+corba,2
+coverage,2
+csharp,2
+dcom,2
+developer,2
+directum rx,2
+"docker, gitlab",2
+domain-driven design,2
+dotnet core,2
+dotnetcore,2
+draw.io,2
+dry,2
+dwh,2
+ecm,2
+ef/dapper,2
+entityframeworkcore,2
+eplan,2
+erp,2
+ethercat,2
+ext js,2
+extjs,2
+extreme.numerics,2
+fhir,2
+"full stack c#, asp.net mvc, mssql разработчик",2
+full-stack,2
+game design,2
+game development,2
+glsl,2
+greenplum,2
+http(s),2
+ide,2
+integration testing,2
+it recruitment,2
+java-script,2
+json-rpc,2
+jwt. xunit,2
+kakfa,2
+kendo mvc ui,2
+kotlin,2
+lambda,2
+ldap,2
+linux + apache,2
+math.net,2
+mef,2
+mercurial,2
+mes,2
+mes-системы,2
+ml,2
+modbus,2
+ms orleans,2
+ms project,2
+ms sharepoint,2
+ms visual basic,2
+ms windows + ms iis,2
+mvp,2
+mysql gui tools,2
+navisworks,2
+net 4/0+,2
+net asp,2
+net core 6+,2
+oauth2,2
+open source,2
+petapoco,2
+pl/pgsql,2
+postman,2
+primeng,2
+qort,2
+quik,2
+razor engine,2
+realml,2
+restapi,2
+revit,2
+robin,2
+rpc,2
+rs-232 (com-порт),2
+rx,2
+sentinel,2
+sentry,2
+serbice fabric,2
+shaders,2
+shell scripting,2
+socket.io,2
+software development,2
+specflow,2
+stl,2
+tdorp,2
+teamleading,2
+tessa,2
+test driven development,2
+three.js,2
+ue,2
+ue4,2
+uipath,2
+umbraco,2
+unirx,2
+ux,2
+web api (rest),2
+web-сервисы,2
+windows 7,2
+windows server,2
+wix toolset,2
+workflow,2
+xamarin.forms,2
+автотесты,2
+администрирование,2
+английский - а1 - начальный,2
+архитектура проекта,2
+база данных: oracle,2
+бизнес-аналитика,2
+бэкенд,2
+великий комбинатор,2
+взаимодействие с заказчиком,2
+внедрение,2
+внимание к деталям,2
+время кончилось,2
+высокая обучаемость,2
+высоконагруженные системы,2
+грамотная речь,2
+графы,2
+гулять?,2
+данные формата json,2
+дизайн человека,2
+желание обучаться,2
+знание английского языка,2
+интеграции,2
+информационная безопасность,2
+информационные системы,2
+информационный обмен по интерфейсам ethernet,2
+"коммуникабельность, ответственность",2
+коммуникативные навыки,2
+кранч и пофиг,2
+красные глаза не моргают до утра,2
+критическое мышление,2
+ловкий шутер,2
+лучше за компом посижу,2
+массовое обслуживание,2
+мастер обходных путей,2
+машинное обучение,2
+мсфо,2
+настройка пк,2
+оптимизация запросов,2
+опыт: более 5 лет,2
+организаторские навыки,2
+основы sql,2
+паттерны программирования,2
+паттерны проектирования,2
+постановка задач разработчикам,2
+потанцуем румбу,2
+принципы solid,2
+проведение тестирований,2
+продуктивность,2
+проектировать api,2
+разработка инсталляторов,2
+разработка инструкций,2
+разработка решений по интеграции,2
+разработка склада,2
+разработчик,2
+реляционные cубд,2
+решение нестандартных задач,2
+руководство командой разработчиков,2
+"с++ (windows, linux)",2
+самоконтроль,2
+саморазвитие,2
+сапр,2
+серверное программирование,2
+система контроля версий git,2
+системная архитектура,2
+сколько времени?,2
+средства криптографической защиты информации,2
+стабильность,2
+"субд, sql",2
+схемотехника электронного оборудования,2
+техническая документация,2
+удалённая работа,2
+умение работать в коллективе,2
+функциональное тестирование,2
+", mongodb",1
+.net (c#),1
+.net 4.5,1
+.net 4.8,1
+.net 5.0,1
+.net 5/6,1
+".net 6,7",1
+.net 7.0,1
+.net 7/8,1
+.net c#,1
+.net core 5,1
+.net core api,1
+.net framework 4.0,1
+.net framework 4.7.2,1
+.net identityserver,1
+.net сore,1
+.net+js,1
+".net, c#, ef, postgresql, k8s, gitlab, kibana, grafana",1
+.net/c#,1
+.net7,1
+.netframework,1
+12 factor app,1
+1с,1
+1с: бухгалтерия,1
+3d max,1
+acid pro,1
+active directory,1
+adobe illustrator,1
+airflow,1
+akka.net,1
+allure,1
+altium designer,1
+amazon web services,1
+android sdk,1
+appinventor,1
+arenadb,1
+asp mvc,1
+asp. net,1
+asp.net (mvc),1
+asp.net 4.6,1
+asp.net 7,1
+asp.net core blazor,1
+asp.net core mvc,1
+asp.net core web api.,1
+asp.net core. blazor,1
+aspnet mvc5,1
+astra linux,1
+astralinux,1
+async,1
+asyncapi,1
+atm,1
+autodesk navisworks,1
+autolisp,1
+avalonaui,1
+await,1
+azure api,1
+azure devops server,1
+azure devops/jira,1
+azure functions,1
+azure serverless architectures,1
+azuredevops,1
+bi,1
+bitcoin,1
+bitrix24,1
+blender,1
+bltoolkit,1
+bluetooth,1
+bootstrap 5.x,1
+bpm-системы,1
+c# (aspx),1
+c# 7.0,1
+c# 7.3,1
+c# xamarin,1
+"c#, .net 6+, asp.net core, javascript, html, css, wpf, mvvm, postgresql",1
+"c#, c++, sql, html, css, .net framework, .net core, angular, wpf, asp.net, mvvm, postgresql",1
+c#12,1
+"c#\.net6, многопоточность, с++, wpf, ci, коммуникабельность",1
+c#net,1
+c#unity,1
+cad,1
+ci/сd,1
+civil 3d,1
+cmake,1
+cms wordpress,1
+composer,1
+continuous delivery,1
+continuous integration,1
+cordova,1
+core (web api/rest),1
+cors,1
+cosmos db,1
+"cqrs, saga, outbox, ddd",1
+ctrader,1
+cubejs,1
+dapr,1
+database,1
+datareon,1
+desktop,1
+desktop приложение,1
+devexpress xaf,1
+devexpress xpo,1
+dicom,1
+"docker, portainer, ansible",1
+docker/kuber,1
+dot.net,1
+dotween,1
+e-commerce,1
+eclipse,1
+ef 7,1
+elastik,1
+embarcadero delphi,1
+embedded,1
+enterprise architect,1
+entity framework.,1
+erp и учётные системы,1
+ethereum,1
+etoken,1
+fastapi,1
+fastendpoints,1
+firebase,1
+firebirdsql,1
+fluentvalidation,1
+flurl,1
+flutter,1
+fortnite,1
+fullstack .net,1
+game dev,1
+gcc,1
+geofabrik,1
+gimp,1
+gis,1
+git / svn,1
+gof,1
+gpu,1
+grps,1
+hangfire,1
+helpdesk,1
+hft,1
+hibernate orm,1
+highload,1
+html 5,1
+html-верстка,1
+"html/ css javascript (vue,react)",1
+html5/css3,1
+http rest api,1
+http/https,1
+hyper-v,1
+ibm mq,1
+identity,1
+identity server,1
+identityserver4,1
+insomnia,1
+ip,1
+"iso 8583-1987, emv",1
+jacarta,1
+javascript (es5/es6),1
+"jira, confluence",1
+jira. git,1
+js/jquery,1
+jwtbearer,1
+k6,1
+"k8s, gitlab, kibana, grafana",1
+kendo ui,1
+kubernetes(openshift),1
+leaflet,1
+linq .net,1
+linux + nginx,1
+linux cli,1
+lisp,1
+logistic vision suite,1
+lua,1
+mac os,1
+macos,1
+mariadb,1
+memory management,1
+metatrader4/5,1
+microsoft azure,1
+microsoft cryptapi,1
+microsoft iis,1
+middle,1
+mjml,1
+ml.net.,1
+mongo,1
+mounriver,1
+mqtt,1
+mr,1
+ms dynamics nav,1
+ms identity,1
+ms office,1
+ms powerpoint,1
+ms project server,1
+ms sql server / postgresql,1
+ms ssrs,1
+ms visual c++,1
+ms windows,1
+ms-sql,1
+msq sql,1
+mssql server,1
+mudblazor,1
+mvc/core,1
+nanocad,1
+net 4.6,1
+net core api,1
+net framework 4.*,1
+net framework 4.6.2,1
+net6.0,1
+netcore,1
+nfc,1
+nodejs,1
+nominatim,1
+nuget,1
+nuxt.js,1
+nvenc,1
+odata,1
+oltp система,1
+opc ua,1
+open street map,1
+openoffice,1
+opentelemetry,1
+opentext,1
+oracle developer,1
+orleans,1
+orms,1
+oscript,1
+osi,1
+owasp,1
+parseserver,1
+particlesystem,1
+php5,1
+pilot study (cra),1
+pilot-ice,1
+pinvoke,1
+pix rpa,1
+pl/pg sql,1
+post/get запросы,1
+postgre,1
+postgre (pg/sql),1
+postgresql server,1
+postgresql или другие реляционные бд,1
+postgresssql,1
+postrgesql,1
+power bi,1
+protobuf,1
+pvs studio,1
+pwa,1
+pygame,1
+questdb,1
+rabitmq,1
+radzen,1
+react.,1
+redmine,1
+redos,1
+redux toolkit,1
+redux-saga,1
+renga,1
+repository,1
+resharper,1
+rest api.,1
+rest json,1
+rest-api,1
+rest-сервис,1
+restful-сервисы,1
+revit api,1
+rfid,1
+rpm/deb,1
+rslogix5000,1
+rtsp,1
+rutoken,1
+s3,1
+scada,1
+scm git,1
+sdk,1
+seo,1
+sharepoint,1
+signal,1
+signal. rest,1
+skia,1
+solidity,1
+sonarqube,1
+sourcetree,1
+spa,1
+spectflow,1
+spring framework,1
+sql: pl/sql и transact-sql,1
+"sqlite, ms sql, mysql",1
+sqllite,1
+sqrs,1
+step7,1
+studio,1
+styled components,1
+switch,1
+t sql,1
+t-flex cad,1
+tarantool,1
+tauri,1
+team management,1
+techlead,1
+terraform,1
+test case,1
+tiaportal,1
+tpl,1
+typescrypt,1
+ugui,1
+ui desktop,1
+ui mock up,1
+ui/ux,1
+uipath orchestrator,1
+uipath studio,1
+unigine,1
+unit,1
+unity ui,1
+unreal engine 4,1
+vb 6.0,1
+"vb, java, c++, c#",1
+vba excel,1
+"vba, python, js, powershell",1
+vfx,1
+vmware,1
+vue3,1
+wasm,1
+waterfall,1
+web api restful,1
+web design,1
+web ui,1
+web-дизайн,1
+web-интерфейс,1
+web-порталы,1
+web.api,1
+web3,1
+webapi.,1
+webassembly,1
+webfroms,1
+websockets/tcp sockets,1
+win32 api,1
+windows installer,1
+windows service,1
+winforms/wpf,1
+wireshark,1
+wms,1
+yandex.cloud,1
+youtrack,1
+автоматизация производства,1
+автоматизированное тестирование,1
+адаптивная верстка,1
+адекватность,1
+анализ потребностей пользователя,1
+аналитические навыки,1
+английский язык (upper-intermediate),1
+асинхронное/синхронное выполнение кода,1
+байесовская статистика,1
+банкоматы,1
+бд postgresql,1
+бизнес-анализ,1
+биржевые шлюзы,1
+блокчейн,1
+веб-дизайн,1
+ведение технической документации,1
+верстка,1
+"внимательность, ответственность",1
+встраиваемые системы,1
+высокая организованность,1
+высокая энергичность,1
+высокий уровень владения c#,1
+высокий уровень дисциплины,1
+высоконагруженные сервисы,1
+генерация идей,1
+гибкость,1
+гибкость мышления,1
+групповое обучение,1
+дизайн,1
+документирование бизнес-требований,1
+ескд,1
+желание работать и зарабатывать,1
+знание autocad,1
+инженерные системы,1
+интеграционное тестирование,1
+интерес и широкий кругозор в it,1
+кибербезопасность,1
+кис,1
+командная работа,1
+конкурентная аналитика,1
+корпоративная этика,1
+крипто про,1
+легкообучаемый,1
+логика,1
+локализация дистрибутива,1
+лучше не кранч,1
+математика,1
+математический анализ,1
+математическое программирование,1
+методология тестирования,1
+многопоточные решения,1
+навыки презентации,1
+нагрузочное тестирование,1
+наставничество,1
+настройка по,1
+настройка сетевых подключений,1
+начертательная геометрия,1
+облако,1
+обучаемый,1
+обучение персонала,1
+оперативный поиск информации в сети интернет,1
+опрятность,1
+оптимизация бизнес-процессов,1
+опыт коммерческой разработки,1
+опыт разработки банковского софта,1
+опыт разработки бизнес-приложений oracle/sap,1
+опытный пользователь пк,1
+основы моделирования,1
+отвага,1
+ответсвенное отношение к работе,1
+ответственное отношение к работе,1
+ответственность и пунктуальность,1
+ответственный подход к работе,1
+построение и анализ синтаксических деревьев,1
+проактивность,1
+программирование на языках высокого уровня,1
+программное обеспечение,1
+проектирование,1
+проектирование баз данных,1
+проектирование бд,1
+проектирование высоконагруженных систем,1
+работа с отладчиками для микроконтроллеров,1
+работа с пк,1
+работа с программаторами микроконтроллеров,1
+развитие системы,1
+разработка,1
+разработка api,1
+разработка web приложений,1
+разработка web-приложения,1
+разработка веб-приложения,1
+разработка десктоп приложения,1
+разработка нового продукта,1
+разработчик c#,1
+регресионное тестирование,1
+регрессионное тестирование,1
+с# 9+,1
+"с#, .net, ооп, visual studio",1
+"с#, api",1
+"с#, mysql, ms sql, net+pdf",1
+с#unity,1
+системный анализ,1
+скрупулезность,1
+слабоумие и отвага,1
+соблюдение сроков,1
+создание компьютнрных игр,1
+создание сайтов,1
+сопровождение по,1
+стремление к профессиональному росту,1
+стрессоустойчивость,1
+сэд docsvision,1
+тесса,1
+тест-дизайн,1
+тестирование пользовательского интерфейса,1
+тестировка,1
+торговые роботы,1
+умение находить общий язык,1
+умение работать с большим количеством информации,1
+"умение работать с системами управления версиями (git), таск-трекинга",1
+управление временем,1
+управление отношениями с клиентами,1
+усердие,1
+финансы,1
+чистоплотность,1
+чтение кода,1
+электроника,1
+электронный документооборот,1
+" .net, c#",1
+" ci/cd, git  elk (elasticsearch, logstash, kibana)  python/django  ibm mq  windows/linux (docke",1
+" sql (ms sql (включая ssis), postgresql)",1

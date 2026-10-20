@@ -1,0 +1,8 @@
+COUNT_SQL = {
+    1: """SELECT skill AS skill_1, count(*) AS cnt FROM s GROUP BY ALL""",
+    2: """SELECT a.skill AS skill_1, b.skill AS skill_2, count(*) AS cnt
+          FROM s a JOIN s b ON a.rid = b.rid AND a.skill < b.skill GROUP BY ALL""",
+    3: """SELECT a.skill AS skill_1, b.skill AS skill_2, c.skill AS skill_3, count(*) AS cnt
+          FROM s a JOIN s b ON a.rid = b.rid AND a.skill < b.skill
+                   JOIN s c ON a.rid = c.rid AND b.skill < c.skill GROUP BY ALL""",
+}

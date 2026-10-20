@@ -1,0 +1,7 @@
+def parse_skills(text):
+    found = set()
+    for part in (text or "").split(";"):
+        skill = part.strip(SKILL_STRIP).lower()
+        if skill:
+            found.add(skill)
+    return sorted(found)

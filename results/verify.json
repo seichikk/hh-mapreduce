@@ -1,0 +1,90 @@
+{
+  "ref": "mapreduce",
+  "ok": true,
+  "tags": {
+    "duckdb": {
+      "ok": true,
+      "same_ids": true,
+      "per_k": {
+        "1": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "2": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "3": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        }
+      }
+    },
+    "mapreduce_naive": {
+      "ok": true,
+      "same_ids": true,
+      "per_k": {
+        "1": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "2": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "3": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        }
+      }
+    },
+    "mapreduce_failtest": {
+      "ok": true,
+      "same_ids": true,
+      "per_k": {
+        "1": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "2": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "3": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        }
+      }
+    },
+    "duckdb_parquet": {
+      "ok": true,
+      "same_ids": true,
+      "per_k": {
+        "1": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "2": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        },
+        "3": {
+          "only_ref": 0,
+          "only_other": 0,
+          "diff": 0
+        }
+      }
+    }
+  }
+}

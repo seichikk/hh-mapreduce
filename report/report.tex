@@ -1,0 +1,555 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,left=2cm,right=1.7cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\usepackage[hidelinks]{hyperref}
+
+\captionsetup{font=small,labelfont=bf}
+\setlist{nosep,leftmargin=1.4em}
+\setlength{\parskip}{0.35em}
+\setlength{\emergencystretch}{3em}
+\DeclareUnicodeCharacter{20BD}{руб.}
+
+\newcommand{\studentName}{Бровкин Аким Алексеевич}
+\newcommand{\studentGroup}{J3310}
+\newcommand{\studentIsu}{465282}
+\newcommand{\teacherName}{\rule{6cm}{0.4pt}}
+\newcommand{\repoUrl}{\texttt{github.com/seichikk/hh-mapreduce}}
+
+\newcommand{\nodata}{\mbox{\textcolor{red!70!black}{\footnotesize[нет данных]}}}
+\newcommand{\defvar}[1]{\expandafter\newcommand\csname #1\endcsname{\nodata}}
+\defvar{hostModel}\defvar{hostCpu}\defvar{hostCores}\defvar{hostRam}\defvar{hostOs}\defvar{dockerMem}\defvar{dockerCpu}
+\defvar{objBytes}\defvar{objHuman}\defvar{objSha}\defvar{objMatch}
+\defvar{mrTasks}\defvar{mrGets}\defvar{mrChunk}\defvar{mrWorkers}\defvar{mrReducers}\defvar{mrSeconds}\defvar{mrShuffled}\defvar{mrEmitted}\defvar{mrCombinerPct}\defvar{mrReadS}
+\defvar{failTask}\defvar{failRestarts}\defvar{failRetried}\defvar{failSame}
+\defvar{duckSeconds}\defvar{duckAccess}\defvar{duckThreads}\defvar{duckMemory}
+\defvar{verifyOk}\defvar{verifyTags}\defvar{nVacancies}\defvar{nWithSkills}\defvar{nWithSalary}\defvar{nRows}
+\defvar{avgSkills}\defvar{maxSkills}\defvar{maxPairs}\defvar{maxTriples}\defvar{uniqOne}\defvar{uniqTwo}\defvar{uniqThree}
+\defvar{sumOne}\defvar{sumTwo}\defvar{sumThree}\defvar{heavyShare}\defvar{heavyVacShare}\defvar{shuffledOpt}\defvar{emittedAll}
+\defvar{salN}\defvar{salShare}\defvar{salMedian}\defvar{salQone}\defvar{salQthree}\defvar{minPair}\defvar{minTriple}\defvar{minBase}\defvar{minEmp}
+\defvar{nPairEff}\defvar{nTripleEff}\defvar{pairUpName}\defvar{pairUpDelta}\defvar{pairUpBase}\defvar{pairDownName}\defvar{pairDownDelta}\defvar{pairDownBase}
+\defvar{tripleUpName}\defvar{tripleUpDelta}\defvar{tripleDownName}\defvar{tripleDownDelta}\defvar{upJunior}\defvar{downJunior}\defvar{upCapital}\defvar{downCapital}
+\defvar{regionsList}\defvar{regBest}\defvar{regBestMed}\defvar{regWorst}\defvar{regWorstMed}\defvar{regGapPct}\defvar{regRemote}\defvar{regRemotePct}
+\defvar{regA}\defvar{regAN}\defvar{regAMed}\defvar{regARemote}\defvar{regAJunior}\defvar{regALift}
+\defvar{regB}\defvar{regBN}\defvar{regBMed}\defvar{regBRemote}\defvar{regBJunior}\defvar{regBLift}
+\defvar{regC}\defvar{regCN}\defvar{regCMed}\defvar{regCRemote}\defvar{regCJunior}\defvar{regCLift}
+\defvar{parquetHuman}\defvar{csvHuman}\defvar{parquetRatio}\defvar{parquetSeconds}\defvar{parquetCols}
+\defvar{profAttempts}\defvar{profOk}
+\defvar{tMrNaive}\defvar{mMrNaive}\defvar{tMrOptOne}\defvar{mMrOptOne}\defvar{tMrOpt}\defvar{mMrOpt}
+\defvar{tMrOptSmall}\defvar{mMrOptSmall}\defvar{tMrOptBig}\defvar{mMrOptBig}\defvar{tDuckCsv}\defvar{mDuckCsv}\defvar{tDuckParquet}\defvar{mDuckParquet}
+\defvar{ratioMrSpeed}\defvar{ratioParSpeed}\defvar{ratioDuckVsMr}\defvar{ratioWorkersSpeed}\defvar{ratioParserSpeed}\defvar{ratioMrMem}\defvar{ratioParMem}
+
+\InputIfFileExists{out/vars-host.tex}{}{}
+\InputIfFileExists{out/vars-storage.tex}{}{}
+\InputIfFileExists{out/vars-mapreduce.tex}{}{}
+\InputIfFileExists{out/vars-failtest.tex}{}{}
+\InputIfFileExists{out/vars-duckdb.tex}{}{}
+\InputIfFileExists{out/vars-verify.tex}{}{}
+\InputIfFileExists{out/vars-growth.tex}{}{}
+\InputIfFileExists{out/vars-salary.tex}{}{}
+\InputIfFileExists{out/vars-regions.tex}{}{}
+\InputIfFileExists{out/vars-parquet.tex}{}{}
+\InputIfFileExists{out/vars-profile.tex}{}{}
+
+\makeatletter
+\newcommand{\tabfile}[2]{\IfFileExists{out/#1}{\@@input out/#1 }{#2}}
+\makeatother
+
+\newcommand{\shot}[3]{\begin{figure}[H]\centering\IfFileExists{img/#1.png}{\includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{img/#1.png}}{\fbox{\parbox[c][3.2cm][c]{0.92\linewidth}{\centering\small\textcolor{red!70!black}{здесь будет скриншот \texttt{img/\detokenize{#1}.png}}\\[5pt]#3}}}\caption{#2}\label{fig:#1}\end{figure}}
+
+\newcommand{\plot}[3]{\begin{figure}[H]\centering\IfFileExists{plots/#1.png}{\includegraphics[width=#3\linewidth]{plots/#1.png}}{\fbox{\parbox[c][2.5cm][c]{0.9\linewidth}{\centering\small\textcolor{red!70!black}{график \texttt{plots/\detokenize{#1}.png} появится после запуска скриптов}}}}\caption{#2}\label{fig:#1}\end{figure}}
+
+\newcommand{\cmdout}[1]{\IfFileExists{out/#1.txt}{\VerbatimInput[fontsize=\scriptsize,breaklines,breakanywhere,frame=single,framesep=2mm,rulecolor=\color{black!35}]{out/#1.txt}}{\begin{center}\fbox{\parbox{0.92\linewidth}{\centering\small\textcolor{red!70!black}{нет файла \texttt{out/\detokenize{#1}.txt}: его создаст скрипт из папки \texttt{scripts}}}}\end{center}}}
+
+\newcommand{\code}[1]{\IfFileExists{out/#1.txt}{\VerbatimInput[fontsize=\footnotesize,breaklines,frame=leftline,framesep=3mm,rulecolor=\color{blue!40},xleftmargin=2mm]{out/#1.txt}}{\begin{center}\fbox{\small\textcolor{red!70!black}{фрагмент кода \texttt{\detokenize{#1}} появится после \texttt{bash scripts/09\_report.sh}}}\end{center}}}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\large Университет ИТМО\par}
+\vspace{4.5cm}
+{\LARGE\bfseries Отчёт по домашнему заданию № 3\par}
+\vspace{0.6cm}
+{\Large «Технология MapReduce»\par}
+\vspace{0.6cm}
+{\normalsize Вариант 4: «Программист, разработчик на C\# и .NET»\par}
+\vfill
+\begin{flushright}
+\begin{tabular}{@{}l@{}}
+Выполнил: студент группы \studentGroup\\
+\studentName\\
+ИСУ \studentIsu\\[1.2em]
+\end{tabular}
+\end{flushright}
+\vspace{2cm}
+{Санкт-Петербург, 2026\par}
+\end{titlepage}
+
+\newpage
+
+\section{Задача, вариант и план}
+
+Нужно было собрать небольшой аналитический пайплайн. Данные лежат в объектном хранилище, навыки и их сочетания я считаю двумя независимыми способами и сверяю результаты. 
+Мой вариант~--- \textbf{«Программист, разработчик на C\# и .NET»}.В подстроку \texttt{.net} попадают и ASP.NET, и VB.NET. 
+Весь код, скрипты запуска, выводы команд и итоговые таблицы лежат в репозитории
+\begin{center}\href{https://github.com/seichikk/hh-mapreduce}{\repoUrl}\end{center}
+\section{Стенд}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Компьютер & \hostModel \\
+Процессор & \hostCpu{} (физических ядер: \hostCores) \\
+Память & \hostRam{} ГБ, из них Docker выделено \dockerMem{} МиБ и \dockerCpu{} CPU \\
+Система & \hostOs \\
+Хранилище & RustFS 1.0.1 в Docker, 4 папки-диска, схема EC $2+2$ \\
+Вычисления & Python 3.12, DuckDB 1.5.6 с расширением httpfs, pyarrow, boto3 (в отдельном контейнере) \\
+\bottomrule
+\end{tabular}
+\caption{Стенд}
+\end{table}
+
+\cmdout{00_check}
+
+\section{Этапы 1--2. Хранилище и данные}\label{sec:storage}
+
+Хранилище я поднял так же, как в ДЗ-2: RustFS в Docker, четыре папки-диска \texttt{disks/disk1..4}, схема Erasure Coding $2+2$. Отличие одно: и RustFS, и контейнер с вычислениями подключены к общей docker-сети \texttt{hhnet}. Поэтому Python и DuckDB ходят в хранилище по адресу \texttt{http://rustfs:9000} как обычные S3-клиенты.
+
+Датасет \texttt{it\_vacancies\_2024.csv} весит \objHuman{}. Он загружен в бакет \texttt{hh-lake} под ключом \texttt{raw/it\_vacancies\_2024.csv} составной загрузкой частями по 64~МиБ. ETag такого объекта не равен MD5 файла, поэтому целостность я проверяю иначе: читаю объект обратно из S3 и считаю SHA-256. Сумма \objSha{} совпала с локальной (\objMatch).
+
+Это единственный шаг, которому нужен локальный файл. Всем дальнейшим вычислениям папка \texttt{dataset} в контейнер вообще не пробрасывается, и данные они берут только из бакета.
+
+\cmdout{01_storage}
+\shot{01_storage}{Запуск RustFS, загрузка датасета и сверка SHA-256}{терминал после \texttt{bash scripts/01\_storage.sh}}
+\shot{01_console}{Бакет hh-lake в веб-консоли RustFS: объект raw/it\_vacancies\_2024.csv}{консоль RustFS, «Браузер», \texttt{hh-lake/raw}}
+
+\subsection{Правила обработки, общие для всех способов}
+
+Чтобы два способа можно было честно сравнить, правила зафиксированы заранее. В Python и в SQL они написаны независимо друг от друга.
+
+\begin{itemize}
+  \item \textbf{Навыки.} Поле \texttt{key\_skills} делится по «;». Каждый навык обрезается от пробелов, табуляций и переводов строк и приводится к нижнему регистру, пустые отбрасываются, повторы внутри вакансии убираются. Синонимы (например, «c\#» и «c sharp») я не склеиваю: это уже интерпретация, а не подсчёт.
+  \item \textbf{Сочетания.} Это упорядоченные по алфавиту кортежи из $k$ разных навыков одной вакансии. Вакансия с $n$ навыками даёт ровно $\binom{n}{k}$ сочетаний размера $k$.
+  \item \textbf{Зарплата.} Берётся только валюта RUR. Если указаны обе границы вилки, беру середину, если одна~--- её. Если в вакансии указано «до вычета налогов» (\texttt{gross = true}), умножаю на 0{,}87, чтобы всё было «на руки». Значения вне диапазона 10\,000--1\,000\,000~₽ считаю мусором.
+\end{itemize}
+
+\code{code_common_is_variant}
+\code{code_common_parse_skills}
+
+\section{Этап 3а. Свой MapReduce из S3}\label{sec:mr}
+
+\subsection{Как устроен}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small, >={Stealth[length=2mm]},
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt, minimum height=9mm},
+  s3/.style={box, fill=green!10}, mst/.style={box, fill=black!6}, mp/.style={box, fill=blue!10}, rd/.style={box, fill=orange!15}]
+\node[s3] (obj) at (0,0) {S3: \texttt{hh-lake/raw/}\\\texttt{it\_vacancies\_2024.csv}};
+\node[mst, right=1.0cm of obj, text width=4.1cm] (master) {мастер\\Range GET по \mrChunk{} МиБ,\\обрезка по границе записи};
+\node[mp] (m1) at (8.9,1.4) {маппер 1};
+\node[mp] (m2) at (8.9,0) {маппер 2};
+\node[mp] (m3) at (8.9,-1.4) {маппер \dots};
+\node[rd] (r1) at (12.0,0.9) {редьюсер 1..2};
+\node[rd] (r2) at (12.0,-0.9) {редьюсер 3..4};
+\node[s3] (res) at (12.0,-2.8) {S3: \texttt{results/mapreduce/}\\\texttt{k1.csv, k2.csv, k3.csv}};
+\draw[->] (obj) -- node[above, font=\scriptsize]{чанки} (master);
+\draw[->] (master.east) -- (m1.west);
+\draw[->] (master.east) -- (m2.west);
+\draw[->] (master.east) -- (m3.west);
+\foreach \m in {m1,m2,m3} {\draw[->] (\m.east) -- (r1.west); \draw[->] (\m.east) -- (r2.west);}
+\draw[->] (r2) -- (res);
+\node[font=\scriptsize, align=center] at (10.45,2.3) {shuffle:\\crc32(ключ) mod 4};
+\end{tikzpicture}
+\caption{Схема моего MapReduce}
+\end{figure}
+
+\begin{enumerate}
+  \item \textbf{Чтение чанками.} Мастер узнаёт размер объекта запросом HEAD и читает его кусками по \mrChunk{}~МиБ запросами \texttt{GET} с заголовком \texttt{Range: bytes=a-b}. Объект целиком никогда не лежит в памяти. У меня вышло \mrGets{} запросов и \mrTasks{} map-задач.
+  \item \textbf{Граница записи.} Обычный разрез по байтам режет строку CSV пополам. Хуже того, в поле описания вакансии могут быть переводы строк внутри кавычек. Поэтому конец последней целой записи в чанке ищется так: идём от конца по символам «\textbackslash n» и берём первый, перед которым стоит \emph{чётное} число кавычек. Нечётное число значит, что мы внутри кавычек. Хвост после этой границы переносится в начало следующего чанка. Для экранированной кавычки \texttt{""} это тоже работает: она добавляет две кавычки и чётность не меняет.
+  \item \textbf{Map.} Каждая задача уходит в отдельный процесс. Маппер разбирает CSV, отбирает вакансии варианта, нормализует навыки и порождает все сочетания $k=1,2,3$.
+  \item \textbf{Combiner.} Внутри маппера одинаковые ключи сразу складываются в счётчик, и в shuffle уходит пара (ключ, частота в чанке). Без этого в shuffle ушли бы \mrEmitted{} записей вида (ключ, 1), а с ним уходит \mrShuffled, то есть на \mrCombinerPct\,\% меньше.
+  \item \textbf{Shuffle и Reduce.} Ключ отправляется редьюсеру с номером $\mathrm{crc32}(\text{ключ}) \bmod 4$, поэтому одинаковые ключи из всех чанков попадают к одному редьюсеру. Редьюсеры работают тоже в отдельных процессах и складывают частоты. В наивной версии редьюсер честно сортирует пары (ключ, 1) и суммирует группы, как в классическом MapReduce.
+  \item \textbf{Контроль.} В конце проверяется $\sum \text{частот}_k = \sum_i \binom{n_i}{k}$ по всем вакансиям. Если равенство не выполняется, программа падает. Результаты k1--k3 записываются в бакет и для проверки сразу читаются обратно.
+\end{enumerate}
+
+\code{code_mapreduce_record_boundary}
+\code{code_mapreduce_map_task}
+\code{code_mapreduce_reduce_task}
+
+\subsection{Запуск}
+
+Оптимизированная версия: \mrWorkers{} маппера, \mrReducers{} редьюсера, разбор CSV через pyarrow. Время~--- \mrSeconds~с, из них \mrReadS~с ушло на чтение из S3. Тут же запускается наивная версия. Её результаты побайтно совпали с оптимизированной, сверка идёт по SHA-256 файлов k1--k3.
+
+\cmdout{02_mapreduce}
+\shot{02_mapreduce}{Работа MapReduce: map-задачи, контроль сумм, запись результатов в S3}{терминал после \texttt{bash scripts/02\_mapreduce.sh}}
+
+\subsection{Отказ маппера}\label{sec:fail}
+
+Падение процесса я имитирую по-настоящему. На первой попытке задачи \failTask{} маппер вызывает \texttt{os.\_exit(137)}, то есть процесс умирает так же, как от нехватки памяти (сигнал 9 даёт тот же код 137). Пул процессов после этого становится сломанным: все незавершённые задачи получают \texttt{BrokenProcessPool}. Мастер ловит это исключение, пересоздаёт пул и заново отправляет все задачи, результат которых ещё не получен. Данные этих задач он держит у себя до подтверждения.
+
+В итог попадает только результат успешной попытки, поэтому двойного счёта нет. Пересозданий пула: \failRestarts, повторно запущены задачи: \failRetried. Результаты с отказом и без отказа \failSame.
+
+\code{code_mapreduce_Master_recover}
+\cmdout{03_failure}
+\shot{03_failure}{Отказ маппера: падение процесса, перезапуск задач, совпадение результата}{терминал после \texttt{bash scripts/03\_failure.sh}}
+
+\section{Этап 3б. Тот же подсчёт в DuckDB}\label{sec:duck}
+
+DuckDB читает тот же объект прямо из S3 через расширение \texttt{httpfs}. Для этого создаётся секрет типа s3 с адресом \texttt{rustfs:9000} и адресацией по пути (\texttt{URL\_STYLE path}). Ничего заранее не скачивается. Условие варианта я написал в SQL заново, а не скопировал из Python: в SQL это \texttt{regexp\_matches} по регулярному выражению, в Python~--- проверка подстрок. Пары и тройки получаются самосоединением таблицы «вакансия--навык» с условием $a < b < c$. Это то же самое, что упорядоченные сочетания в Python.
+
+\code{code_duck_VARIANT_SQL}
+\code{code_duck_SKILLS_SQL}
+\code{code_duck_COUNT_SQL}
+
+\cmdout{04_duckdb}
+\shot{04_duckdb}{Подсчёт навыков, пар и троек в DuckDB}{терминал после \texttt{bash scripts/04\_duckdb.sh}}
+
+\section{Этап 4. Сверка и рост числа сочетаний}\label{sec:verify}
+
+\subsection{Совпадение результатов}
+
+Скрипт \texttt{verify.py} читает результаты всех способов из S3. Сравниваются не только итоговые суммы, но и каждый ключ: какие сочетания есть только у одного способа и у каких одинаковых ключей разные частоты. Отдельно сравнивается мультимножество id отобранных вакансий. Если фильтр в SQL и Python разошёлся хотя бы на одну вакансию, это всплывёт сразу.
+
+Итог: результаты всех \verifyTags{} способов \textbf{\verifyOk}. Всего в датасете \nRows{} записей, в вариант попало \nVacancies{} вакансий, из них \nWithSkills{} с навыками и \nWithSalary{} с зарплатой в рублях.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\begin{tabular}{@{}llrr>{\raggedright\arraybackslash}p{5.4cm}rl@{}}
+\toprule
+$k$ & Способ & Ключей & $\sum$ частот & Самое частое сочетание & Частота & Сверка \\
+\midrule
+\tabfile{verify_table.tex}{\nodata & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Контрольные числа всех способов}
+\end{table}
+
+\cmdout{05_verify}
+\shot{05_verify}{Сверка MapReduce, DuckDB, наивной версии и запуска с отказом}{терминал после \texttt{bash scripts/05\_verify.sh}}
+
+\subsection{Почему пар и троек так много}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}crrr@{}}
+\toprule
+$k$ & Уникальных сочетаний & $\sum$ частот & $\sum_i \binom{n_i}{k}$ \\
+\midrule
+\tabfile{growth_k.tex}{\nodata & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Рост числа сочетаний с ростом $k$}
+\end{table}
+
+Число записей растёт так быстро из-за комбинаторики внутри одной вакансии. Вакансия с $n$ навыками даёт $n$ навыков, $\binom{n}{2} = n(n-1)/2$ пар и $\binom{n}{3} = n(n-1)(n-2)/6$ троек. Первое растёт линейно, второе квадратично, третье кубически. В среднем у вакансии \avgSkills{} навыка, а у самой «богатой» их \maxSkills: одна такая вакансия даёт \maxPairs{} пар и \maxTriples{} троек.
+
+Поэтому основную массу троек дают немногие вакансии с длинным списком навыков. Вакансии с 10 и более навыками~--- это \heavyVacShare\,\% выборки, но на них приходится \heavyShare\,\% всех вхождений троек. Число уникальных сочетаний растёт медленнее суммы частот: одинаковые популярные пары повторяются из вакансии в вакансию. Combiner как раз и использует эти повторы.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+$n$ навыков & Вакансий & Доля, \% & $\binom{n}{2}$ & $\binom{n}{3}$ & Вклад в пары & Вклад в тройки \\
+\midrule
+\tabfile{growth_table.tex}{\nodata & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Распределение числа навыков и вклад в сумму частот}
+\end{table}
+
+\plot{growth}{Распределение числа навыков в вакансии и рост числа сочетаний (логарифмическая шкала)}{0.95}
+\cmdout{05_growth}
+
+\section{Этап 5. Навыки и зарплата}\label{sec:salary}
+
+\subsection{Методика}
+
+Зарплата известна у \salN{} вакансий варианта (\salShare\,\%). Медиана~--- \salMedian~₽ на руки, межквартильный размах \salQone--\salQthree~₽. Я беру медиану, а не среднее, потому что пара вакансий на миллион сдвинула бы среднее куда сильнее, чем реальную картину.
+
+«Прибавку» сочетания я считаю относительно его \emph{базы}~--- самой частой части, без которой сочетание не существует:
+\[
+\Delta(a,b) = \operatorname{med}(a \wedge b) - \operatorname{med}(A), \qquad A = \arg\max\{\mathrm{freq}(a), \mathrm{freq}(b)\},
+\]
+\[
+\Delta(a,b,c) = \operatorname{med}(a \wedge b \wedge c) - \operatorname{med}(P), \qquad P = \arg\max_{\text{пары внутри тройки}} \mathrm{freq}.
+\]
+Частоты берутся из результатов MapReduce (k1 и k2). Смысл такой: «сколько добавляет к зарплате специалиста с навыком A ещё и навык B». Базой выбран \emph{более частый} навык, потому что он и есть основа профиля, а редкий навык~--- добавка к нему. Например, в паре «c\# + kubernetes» база~--- c\#, и вопрос звучит так: что даёт Kubernetes C\#-разработчику.
+
+Чтобы медиана не прыгала от двух-трёх вакансий, есть пороги: у пары не меньше \minPair{} вакансий с зарплатой, у тройки~--- не меньше \minTriple, у базы~--- не меньше \minBase, плюс не меньше \minEmp{} разных работодателей. Иначе «лучшей парой» могла бы оказаться одна компания с десятком одинаковых вакансий. Порог прошли \nPairEff{} пар и \nTripleEff{} троек.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Навык & Вакансий & С зарплатой & Медиана, ₽ & К медиане варианта \\
+\midrule
+\tabfile{salary_singles.tex}{\nodata & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Самые частые навыки варианта и их медианная зарплата}
+\end{table}
+
+\subsection{Пары}
+
+В таблицах ниже: «с з/п»~--- число вакансий сочетания с зарплатой, «база»~--- более частый навык и его медиана, «джуны»~--- доля вакансий с опытом до 3 лет у сочетания и у базы.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.0cm}r>{\raggedright\arraybackslash}p{2.5cm}rrrrr@{}}
+\toprule
+Пара & С з/п & База & Мед. базы & Мед. пары & $\Delta$, ₽ & $\Delta$, \% & Джуны, \% \\
+\midrule
+\tabfile{salary_pairs_up.tex}{\nodata & & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Пары, которые сильнее всего \textbf{повышают} медиану относительно базы}
+\end{table}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.0cm}r>{\raggedright\arraybackslash}p{2.5cm}rrrrr@{}}
+\toprule
+Пара & С з/п & База & Мед. базы & Мед. пары & $\Delta$, ₽ & $\Delta$, \% & Джуны, \% \\
+\midrule
+\tabfile{salary_pairs_down.tex}{\nodata & & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Пары, которые сильнее всего \textbf{понижают} медиану относительно базы}
+\end{table}
+
+\subsection{Тройки}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.0cm}r>{\raggedright\arraybackslash}p{2.5cm}rrrrr@{}}
+\toprule
+Тройка & С з/п & Базовая пара & Мед. базы & Мед. тройки & $\Delta$, ₽ & $\Delta$, \% & Джуны, \% \\
+\midrule
+\tabfile{salary_triples_up.tex}{\nodata & & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Тройки, которые сильнее всего \textbf{повышают} медиану относительно базовой пары}
+\end{table}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.0cm}r>{\raggedright\arraybackslash}p{2.5cm}rrrrr@{}}
+\toprule
+Тройка & С з/п & Базовая пара & Мед. базы & Мед. тройки & $\Delta$, ₽ & $\Delta$, \% & Джуны, \% \\
+\midrule
+\tabfile{salary_triples_down.tex}{\nodata & & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Тройки, которые сильнее всего \textbf{понижают} медиану относительно базовой пары}
+\end{table}
+
+\plot{salary}{Разница медиан сочетания и его базы: зелёные повышают, красные понижают}{1.0}
+
+\subsection{Что из этого следует}
+
+Сильнее всего медиану поднимает пара \textbf{\pairUpName}: на \pairUpDelta~₽ к медиане базового навыка \pairUpBase. Сильнее всего опускает пара \textbf{\pairDownName}: \pairDownDelta~₽ к базе \pairDownBase. Среди троек лидирует \textbf{\tripleUpName} (\tripleUpDelta~₽), а самая «дешёвая»~--- \textbf{\tripleDownName} (\tripleDownDelta~₽).
+
+Важная оговорка: это \emph{связь}, а не причина. Навык сам по себе зарплату не платит, зато он многое говорит о том, \emph{какая это вакансия}. Это хорошо видно по столбцу «джуны». В повышающих сочетаниях вакансий с опытом до трёх лет в среднем \upJunior\,\%, а в понижающих~--- \downJunior\,\%. Доля Москвы и Петербурга~--- \upCapital\,\% и \downCapital\,\% соответственно. Отсюда три типичных механизма:
+\begin{itemize}
+  \item \textbf{уровень позиции.} Инфраструктурные и архитектурные навыки (Kubernetes, Kafka, микросервисы, highload) обычно пишут в вакансии для middle+ и senior, и медиана растёт вместе с опытом, а не из-за самого слова в описании;
+  \item \textbf{тип продукта.} Desktop-стек (WinForms, WPF), связка с 1С, внутренняя автоматизация~--- это часто небольшие компании и регионы, где ставки ниже, чем в продуктовом вебе;
+  \item \textbf{«списки всего подряд».} Вакансии, где работодатель перечисляет и HTML, и SQL, и 1С, нередко ищут универсала на невысокую ставку, поэтому длинный список «базовых» навыков тоже может тянуть медиану вниз.
+\end{itemize}
+Отличить один механизм от другого по одной медиане нельзя. Для этого нужна регрессия с опытом, регионом и работодателем как контрольными переменными. Это следующий шаг, за рамками задания.
+
+\cmdout{06_salary}
+\shot{06_salary}{Вывод анализа зарплат}{терминал после \texttt{bash scripts/06\_salary.sh}}
+
+\section{Этап 6. Три региона}\label{sec:regions}
+
+Для сравнения я взял две столицы и самый крупный по числу вакансий регион после них: \regionsList. Третий регион скрипт выбирает автоматически, чтобы в каждом было достаточно данных для медиан.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+Регион & Вакансий & Доля,\,\% & С з/п & Медиана & Q1--Q3 & С навык.,\,\% & Навыков & Удал.,\,\% & Опыт${<}3$\,л.,\,\% \\
+\midrule
+\tabfile{regions_profile.tex}{\nodata & & & & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Таблица 1. Профиль регионов}
+\end{table}
+
+\begin{longtable}{@{}ll>{\raggedright\arraybackslash}p{6.0cm}rrr@{}}
+\caption{Таблица 2. Самые частые навыки, пары и тройки по регионам (доля~--- от вакансий региона с навыками, медиана~--- если в сочетании $\geq 5$ вакансий с зарплатой)}\\
+\toprule
+Регион & $k$ & Сочетание & Вакансий & Доля, \% & Медиана, ₽ \\
+\midrule
+\endfirsthead
+\toprule
+Регион & $k$ & Сочетание & Вакансий & Доля, \% & Медиана, ₽ \\
+\midrule
+\endhead
+\tabfile{regions_combos.tex}{\nodata & & & & & \\}
+\bottomrule
+\end{longtable}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Регион & Навык & Доля в регионе, \% & В двух других, \% & Во сколько раз чаще \\
+\midrule
+\tabfile{regions_lift.tex}{\nodata & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Навыки, которые отличают регион от двух других (не меньше 15 упоминаний)}
+\end{table}
+
+\plot{regions}{Медианная зарплата с межквартильным размахом и востребованность самых частых навыков по регионам}{1.0}
+
+\subsection{Наблюдения}
+
+\begin{itemize}
+  \item \textbf{Зарплата.} Выше всех медиана в регионе «\regBest» (\regBestMed~₽), ниже всех~--- в «\regWorst» (\regWorstMed~₽). Разрыв около \regGapPct\,\%. Межквартильный размах показывает, насколько разнородны вакансии внутри региона: чем он шире, тем больше в регионе одновременно и стажёрских позиций, и дорогих ведущих.
+  \item \textbf{Опыт.} Доля вакансий с опытом до трёх лет: \regA~--- \regAJunior\,\%, \regB~--- \regBJunior\,\%, \regC~--- \regCJunior\,\%. Если в регионе с низкой медианой больше младших позиций, часть разрыва в зарплате объясняется составом вакансий, а не только региональными ставками.
+  \item \textbf{Удалёнка.} Больше всего удалённых вакансий в регионе «\regRemote» (\regRemotePct\,\%). Удалённые вакансии со столичной вилкой формально приписаны к региону работодателя, и это сглаживает межрегиональные различия.
+  \item \textbf{Стек.} Верхушка рейтинга навыков во всех трёх регионах похожа (таблица 2), а отличия видны во «втором эшелоне»: для региона \regA{} характернее всего \regALift, для \regB~--- \regBLift, для \regC~--- \regCLift{} (см. таблицу выше).
+\end{itemize}
+
+\cmdout{07_regions}
+\shot{07_regions}{Вывод регионального анализа}{терминал после \texttt{bash scripts/07\_regions.sh}}
+
+\section{Профилирование и бонус}\label{sec:profile}
+
+\subsection{Как мерил}
+
+Каждый способ запускается отдельным процессом \profAttempts{} раза. Порядок способов в каждой попытке сдвигается, чтобы ни один не оказывался всегда первым или последним. Перед каждым запуском контейнер RustFS перезапускается, поэтому кэши хранилища у всех одинаково «холодные».
+
+\begin{itemize}
+  \item \textbf{время}~--- настенное, от старта процесса до записи результатов на диск, включая запуск интерпретатора и чтение из S3;
+  \item \textbf{CPU}~--- сумма пользовательского и системного времени всех дочерних процессов (\texttt{getrusage}). Если CPU больше настенного времени, значит, работало несколько ядер;
+  \item \textbf{пик памяти}~--- максимум суммарного RSS всего дерева процессов (мастер плюс все мапперы), опрос каждые 20~мс через \texttt{psutil}. Общие страницы разделяемых библиотек при этом считаются в каждом процессе, так что для многопроцессных вариантов это оценка сверху.
+\end{itemize}
+После каждого запуска результат сверяется с эталоном по SHA-256, итог: все совпали~--- \profOk.
+
+\subsection{Бонус: что оптимизировал}
+
+\begin{enumerate}
+  \item \textbf{MapReduce «до»}: один процесс, стандартный модуль \texttt{csv}, без combiner'а. В shuffle уходит каждая пара (ключ, 1), редьюсер сортирует и суммирует.
+  \item \textbf{MapReduce «после»}:
+  \begin{itemize}
+    \item CSV разбирается C++-парсером pyarrow, и только по нужным колонкам. Длинное описание вакансии в Python-строки вообще не превращается;
+    \item вакансии отсеиваются по роли ещё до создания словаря строки;
+    \item combiner в маппере;
+    \item несколько мапперов параллельно.
+  \end{itemize}
+  Отдельно замерены промежуточные шаги (только парсер и combiner на одном маппере) и размер чанка 8 и 128~МиБ.
+  \item \textbf{DuckDB «до»}~--- запрос по исходному CSV. \textbf{«После»}~--- по колоночной копии в Parquet (zstd), которую DuckDB сам записал в тот же бакет. В неё вошли только поля, нужные анализу: \parquetCols. Размер \parquetHuman{} против \csvHuman{} у CSV, в \parquetRatio{} раза меньше.
+\end{enumerate}
+
+\cmdout{08_bonus}
+
+\subsection{Результаты}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\begin{tabular}{@{}p{5.2cm}crrrrc@{}}
+\toprule
+Способ & Запусков & Время, с & Мин., с & CPU, с & Пик памяти, МиБ & Совпало \\
+\midrule
+\tabfile{profile_table.tex}{\nodata & & & & & & \\}
+\bottomrule
+\end{tabular}
+\caption{Время и память (среднее $\pm$ стандартное отклонение)}
+\end{table}
+
+\plot{profile}{Время и пик памяти каждого способа; точки~--- отдельные запуски}{1.0}
+
+\begin{itemize}
+  \item \textbf{MapReduce: до и после.} Оптимизированная версия быстрее наивной в \ratioMrSpeed{} раза (\tMrNaive~с против \tMrOpt~с). Основной выигрыш даёт парсер: только замена \texttt{csv} на pyarrow с combiner'ом на одном маппере даёт ускорение в \ratioParserSpeed{} раза. Переход с одного маппера на несколько меняет время в \ratioWorkersSpeed{} раза. Выигрыш здесь ограничен, потому что мастер читает S3 последовательно, а разбор у pyarrow и так быстрый, и узким местом становится чтение.
+  \item \textbf{Память MapReduce.} Пик у наивной версии \mMrNaive~МиБ, у оптимизированной \mMrOpt~МиБ. Combiner сжимает shuffle, но несколько мапперов одновременно держат свои чанки, а RSS каждого процесса считается отдельно. Размер чанка напрямую управляет памятью: при 8~МиБ пик \mMrOptSmall~МиБ, при 128~МиБ~--- \mMrOptBig~МиБ, а время почти не меняется. Для ноутбука разумный выбор~--- 16--32~МиБ.
+  \item \textbf{DuckDB против своего MapReduce.} DuckDB по CSV (\tDuckCsv~с) работает в \ratioDuckVsMr{} раза быстрее моей оптимизированной версии. У него векторизованный многопоточный разбор CSV, фильтр проверяется до материализации строк, а сочетания считаются хэш-соединениями внутри одного процесса, без сериализации данных между процессами. Платим памятью: \mDuckCsv~МиБ, потому что буферы чтения и хэш-таблицы самосоединения живут в одном процессе.
+  \item \textbf{Parquet.} DuckDB по колоночной копии быстрее, чем по CSV, в \ratioParSpeed{} раза и требует в \ratioParMem{} раза меньше памяти (\mDuckParquet~МиБ). Из S3 читаются только нужные колонки нужных групп строк, а разбор текста не нужен вообще. Это главный практический вывод: если по данным считают больше одного раза, их стоит один раз переложить в колоночный формат.
+\end{itemize}
+
+\begin{longtable}{@{}p{7cm}crrr@{}}
+\caption{Все запуски}\\
+\toprule
+Способ & Попытка & Время, с & CPU, с & Пик памяти, МиБ \\
+\midrule
+\endfirsthead
+\toprule
+Способ & Попытка & Время, с & CPU, с & Пик памяти, МиБ \\
+\midrule
+\endhead
+\tabfile{profile_runs.tex}{\nodata & & & & \\}
+\bottomrule
+\end{longtable}
+
+\cmdout{08_profile}
+\shot{08_profile}{Итог профилирования}{терминал после \texttt{bash scripts/08\_profile.sh}}
+\shot{08_console_results}{Результаты k1, k2, k3 в бакете hh-lake (results/mapreduce)}{консоль RustFS, \texttt{hh-lake/results/mapreduce}}
+
+\section{Выводы}
+
+\begin{enumerate}
+  \item Хранилище RustFS поднято на четырёх папках-дисках, датасет лежит в бакете \texttt{hh-lake}, и после загрузки его SHA-256 совпал с исходным. Все вычисления читают данные только из S3.
+  \item Мой MapReduce читает объект чанками через Range GET и правильно режет CSV по границам записей, даже когда внутри полей есть переводы строк. Он считает навыки, пары и тройки для \nVacancies{} вакансий варианта C\#/.NET и переживает падение процесса-маппера без изменения результата.
+  \item DuckDB с независимо написанным SQL-условием дал те же \uniqOne{} навыков, \uniqTwo{} пар и \uniqThree{} троек с теми же частотами. Совпали все ключи, все частоты и набор отобранных вакансий.
+  \item Сумма частот растёт от \sumOne{} к \sumTwo{} и \sumThree{}, потому что вакансия с $n$ навыками даёт $\binom{n}{2}$ пар и $\binom{n}{3}$ троек. Основной вклад дают вакансии с длинными списками навыков.
+  \item Сильнее всего медиану повышают \pairUpName{} (пара) и \tripleUpName{} (тройка), понижают~--- \pairDownName{} и \tripleDownName. Во многом это отражает уровень позиции и тип продукта, а не «цену» навыка.
+  \item Из трёх регионов (\regionsList) выше всего медиана в регионе «\regBest», ниже всего~--- в «\regWorst», разрыв около \regGapPct\,\%.
+  \item DuckDB быстрее моего MapReduce, а переход на Parquet ускоряет его ещё в \ratioParSpeed{} раза и экономит память в \ratioParMem{} раза. Свой MapReduce после оптимизации стал быстрее в \ratioMrSpeed{} раза.
+\end{enumerate}
+\appendix
+\section{Репозиторий и воспроизведение}
+
+Исходный код всех программ и отчёт опубликованы на GitHub:
+\begin{center}\href{https://github.com/seichikk/hh-mapreduce}{\repoUrl}\end{center}
+
+\begin{Verbatim}[fontsize=\small,frame=single]
+bash scripts/00_check.sh        # стенд, сборка образа, проверка датасета
+bash scripts/01_storage.sh      # rustfs, бакет hh-lake, загрузка, sha256
+bash scripts/02_mapreduce.sh    # свой mapreduce (оптимизированный и наивный)
+bash scripts/03_failure.sh      # отказ маппера
+bash scripts/04_duckdb.sh       # duckdb
+bash scripts/05_verify.sh       # сверка и рост числа сочетаний
+bash scripts/06_salary.sh       # зарплаты
+bash scripts/07_regions.sh      # регионы
+bash scripts/08_profile.sh      # parquet и профилирование
+bash scripts/09_report.sh       # этот отчёт
+\end{Verbatim}
+
+
+\end{document}

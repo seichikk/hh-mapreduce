@@ -1,0 +1,4 @@
+VARIANT_SQL = r"""
+    role = 'Программист, разработчик'
+    AND regexp_matches(lower(name), 'c#|с#|\.net|dotnet|c sharp|csharp|си шарп')
+"""

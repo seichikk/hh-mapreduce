@@ -1,0 +1,17 @@
+
+==== стенд ====
+модель: MacBookPro16,1
+процессор: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz, физических ядер: 6
+оперативная память: 32 гб
+система: macOS 26.6.2
+docker engine 29.8.0, выделено docker: 12 cpu, 5920 миб памяти
+python 3.12.15 | duckdb 1.5.6 | pyarrow 26.0.0 | boto3 1.43.116
+
+==== датасет ====
+файл: dataset/it_vacancies_2024.csv, 847619384 байт
+считаю sha256 (секунд 10)...
+sha256: 303db922b541e4440906f5a7e8be32fb55e8808f950ffddb8c272f1548212a65
+это тот самый курсовой файл it_vacancies_2024.csv (sha256 совпал с эталоном курса)
+cut: stdin: Illegal byte sequence
+source,vacancy_id,status,snapshot_date,published_at,area,employer_id,employer_inn,employer_ogrn,employer_name,name,role,sphere,salary_from,salary_to,currency,gross,experience,schedule,employment,key_skills,description,url
+hh,106654617,not_active,2024-09-03,2024-09-02,Краснодар,4105707,,1197325010211,,Python Backend Developer,"Программист, разработчик",,,,,,От 3 до 6 лет,Удаленная работа,Полная занятость,Python; PostgreSQL; Django Framework,"В Nord Clan мы занимаемся разработкой решений и алг

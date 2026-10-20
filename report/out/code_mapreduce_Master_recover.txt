@@ -1,0 +1,13 @@
+    def recover(self, reason, extra=()):
+        lost = sorted(set(self.futures.values()) | set(extra))
+        self.pool.shutdown(wait=False, cancel_futures=True)
+        self.futures.clear()
+        self.restarts += 1
+        print(f"  мастер: {reason}. пул процессов пересоздан, задачи перезапускаются: {lost}", flush=True)
+        self.pool = ProcessPoolExecutor(max_workers=self.workers, mp_context=self.ctx)
+        for tid in lost:
+            self.tasks[tid][1] += 1
+            if self.tasks[tid][1] > MAX_ATTEMPTS:
+                raise RuntimeError(f"задача {tid} упала {MAX_ATTEMPTS} раза подряд")
+            self.retried.append((tid, self.tasks[tid][1]))
+            self.submit(tid)

@@ -1,0 +1,6 @@
+SKILLS_SQL = r"""
+    list_sort(list_distinct(list_filter(
+        list_transform(string_split(coalesce(key_skills, ''), ';'),
+                       s -> lower(trim(s, ' ' || chr(9) || chr(13) || chr(10)))),
+        s -> s <> '')))
+"""

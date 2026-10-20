@@ -1,0 +1,25 @@
+{
+  "source": "parquet",
+  "access": "httpfs",
+  "threads": 4,
+  "memory_limit": "1500MB",
+  "vacancies": 4356,
+  "with_skills": 3345,
+  "unique": [
+    1164,
+    17198,
+    114332
+  ],
+  "sums": [
+    22866,
+    92865,
+    310903
+  ],
+  "combinations": [
+    22866,
+    92865,
+    310903
+  ],
+  "seconds_total": 0.592,
+  "seconds_load": 0.309
+}

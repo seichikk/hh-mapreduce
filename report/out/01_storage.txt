@@ -1,0 +1,51 @@
+
+==== этап 1. объектное хранилище rustfs: 4 папки-диска, erasure coding ====
+нашёл старый контейнер rustfs (например, из дз-2), удаляю его. данные дз-2 в ~/hdfs-lab не трогаются
+
+$ docker run -d --name rustfs --network hhnet --user 0:0 --restart unless-stopped -p 127.0.0.1:9000:9000 -p 127.0.0.1:9001:9001 -v /Users/seichik/Downloads/hh-mapreduce/disks/disk1:/data/rustfs1 -v /Users/seichik/Downloads/hh-mapreduce/disks/disk2:/data/rustfs2 -v /Users/seichik/Downloads/hh-mapreduce/disks/disk3:/data/rustfs3 -v /Users/seichik/Downloads/hh-mapreduce/disks/disk4:/data/rustfs4 -v /Users/seichik/Downloads/hh-mapreduce/logs:/logs -e RUSTFS_VOLUMES=/data/rustfs{1...4} -e RUSTFS_ACCESS_KEY=rustfsadmin -e RUSTFS_SECRET_KEY=rustfsadmin -e RUSTFS_ADDRESS=0.0.0.0:9000 -e RUSTFS_CONSOLE_ENABLE=true -e RUSTFS_CONSOLE_ADDRESS=0.0.0.0:9001 -e RUSTFS_UNSAFE_BYPASS_DISK_CHECK=true -e RUSTFS_OBS_LOG_DIRECTORY=/logs -e RUSTFS_OBS_LOGGER_LEVEL=warn rustfs/rustfs:1.0.1
+79d9f50d4b52420b45d7aad2071a7ad135b921b2eb0cd5e8b56414201e74db0f
+жду, пока rustfs поднимется...
+rustfs отвечает: http://localhost:9000/health/live -> 200
+
+$ docker ps --filter name=^rustfs$ --format table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}
+NAMES     IMAGE                 STATUS        PORTS
+rustfs    rustfs/rustfs:1.0.1   Up 1 second   127.0.0.1:9000-9001->9000-9001/tcp
+
+==== этап 2. загрузка датасета в бакет hh-lake ====
+
+$ python -m lab.storage upload --path /data/it_vacancies_2024.csv
+создан бакет hh-lake
+локальный файл: it_vacancies_2024.csv, 847619384 байт (808.35 миб)
+sha256 локального файла: 303db922b541e4440906f5a7e8be32fb55e8808f950ffddb8c272f1548212a65
+загружено в s3://hh-lake/raw/it_vacancies_2024.csv за 16.5 с (49.1 миб/с)
+читаю объект обратно из хранилища и считаю sha256...
+sha256 объекта в s3:     303db922b541e4440906f5a7e8be32fb55e8808f950ffddb8c272f1548212a65
+размер объекта в s3: 847619384 байт
+файл в хранилище совпадает с исходным: да
+
+$ python -m lab.storage inspect
+колонки датасета (23): source, vacancy_id, status, snapshot_date, published_at, area, employer_id, employer_inn, employer_ogrn, employer_name, name, role, sphere, salary_from, salary_to, currency, gross, experience, schedule, employment, key_skills, description, url
+все нужные колонки на месте: name, role, key_skills, area, salary_from, salary_to, currency, gross
+первая запись (обрезано):
+  vacancy_id: '106654617'
+  area: 'Краснодар'
+  name: 'Python Backend Developer'
+  role: 'Программист, разработчик'
+  salary_from: ''
+  salary_to: ''
+  currency: ''
+  gross: ''
+  experience: 'От 3 до 6 лет'
+  schedule: 'Удаленная работа'
+  key_skills: 'Python; PostgreSQL; Django Framework'
+
+$ python -m lab.storage ls --prefix raw/
+содержимое s3://hh-lake/raw/
+  2026-10-20 21:52:21     847619384  raw/it_vacancies_2024.csv
+объектов: 1, всего 808.35 миб
+
+$ du -sh disks/disk1 disks/disk2 disks/disk3 disks/disk4
+409M    disks/disk1
+410M    disks/disk2
+410M    disks/disk3
+408M    disks/disk4
